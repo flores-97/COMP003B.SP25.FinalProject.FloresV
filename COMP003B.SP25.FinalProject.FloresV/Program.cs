@@ -1,3 +1,11 @@
+//Author: Victor Flores
+//Course: COMP-003B: ASP.NET Core
+//Instructor: Jonathon Cruz
+//Purpose: Final Project synthesizing MVC, Web API, EF Core, and middleware
+
+using COMP003B.SP25.FinalProject.FloresV.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace COMP003B.SP25.FinalProject.FloresV
 {
     public class Program
@@ -8,6 +16,8 @@ namespace COMP003B.SP25.FinalProject.FloresV
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<WebDevAcademyContext>(options => options.UseSqlServer("Name=ConnectionStrings:DefaultConnection"));
 
             var app = builder.Build();
 
