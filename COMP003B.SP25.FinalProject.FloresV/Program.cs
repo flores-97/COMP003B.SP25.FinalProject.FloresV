@@ -30,7 +30,12 @@ namespace COMP003B.SP25.FinalProject.FloresV
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
+
+            app.UseMiddleware<COMP003B.SP25.FinalProject.FloresV.Middleware.RequestTimingMiddleware>();
+
+            app.UseWelcomePage("/welcome");
 
             app.UseRouting();
 

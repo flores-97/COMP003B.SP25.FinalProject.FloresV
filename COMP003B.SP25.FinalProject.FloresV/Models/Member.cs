@@ -12,9 +12,9 @@ namespace COMP003B.SP25.FinalProject.FloresV.Models
         [EmailAddress]
         public string Email { get; set; }
         public virtual ICollection<Branch>? Branches { get; set; }
+
         [Required]
         [Range(17, 70)]
         public int Age { get; set; }
-
     }
 }

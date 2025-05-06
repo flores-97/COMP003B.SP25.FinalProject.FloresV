@@ -40,6 +40,12 @@ namespace COMP003B.SP25.FinalProject.FloresV.Controllers
                 return NotFound();
             }
 
+            ViewBag.Ranks = from s in _context.Members
+                            join e in _context.Branches on s.MemberId equals e.MemberId
+                            join c in _context.Ranks on e.RankId equals c.RankId
+                            where s.MemberId == id
+                            select c;
+
             return View(member);
         }
 

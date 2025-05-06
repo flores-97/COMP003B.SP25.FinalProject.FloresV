@@ -31,6 +31,15 @@
         </dd>
     </dl>
 </div>
+<div class="col-md-4">
+    <h4>Ranks</h4>
+    <ul>
+        @foreach (Rank rank in ViewBag.Ranks)
+        {
+            <li>@rank.Title</li>
+        }
+    </ul>
+</div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.MemberId">Edit</a> |
     <a asp-action="Index">Back to List</a>
