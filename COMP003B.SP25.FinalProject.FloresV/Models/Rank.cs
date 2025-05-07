@@ -9,5 +9,6 @@ namespace COMP003B.SP25.FinalProject.FloresV.Models
         [Required]
         public string Title { get; set; }
         public virtual ICollection<Branch>? Branches { get; set; }
+
     }
 }

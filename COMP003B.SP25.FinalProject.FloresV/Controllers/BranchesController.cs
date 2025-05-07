@@ -49,7 +49,7 @@ namespace COMP003B.SP25.FinalProject.FloresV.Controllers
         // GET: Branches/Create
         public IActionResult Create()
         {
-            ViewData["MemberId"] = new SelectList(_context.Members, "MemberId", "Email");
+            ViewData["MemberId"] = new SelectList(_context.Members, "MemberId", "Name");
             ViewData["RankId"] = new SelectList(_context.Ranks, "RankId", "Title");
             return View();
         }
@@ -67,7 +67,7 @@ namespace COMP003B.SP25.FinalProject.FloresV.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MemberId"] = new SelectList(_context.Members, "MemberId", "Email", branch.MemberId);
+            ViewData["MemberId"] = new SelectList(_context.Members, "MemberId", "Name", branch.MemberId);
             ViewData["RankId"] = new SelectList(_context.Ranks, "RankId", "Title", branch.RankId);
             return View(branch);
         }
@@ -85,7 +85,7 @@ namespace COMP003B.SP25.FinalProject.FloresV.Controllers
             {
                 return NotFound();
             }
-            ViewData["MemberId"] = new SelectList(_context.Members, "MemberId", "Email", branch.MemberId);
+            ViewData["MemberId"] = new SelectList(_context.Members, "MemberId", "Name", branch.MemberId);
             ViewData["RankId"] = new SelectList(_context.Ranks, "RankId", "Title", branch.RankId);
             return View(branch);
         }
@@ -122,7 +122,7 @@ namespace COMP003B.SP25.FinalProject.FloresV.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MemberId"] = new SelectList(_context.Members, "MemberId", "Email", branch.MemberId);
+            ViewData["MemberId"] = new SelectList(_context.Members, "MemberId", "Name", branch.MemberId);
             ViewData["RankId"] = new SelectList(_context.Ranks, "RankId", "Title", branch.RankId);
             return View(branch);
         }
