@@ -26,7 +26,6 @@ namespace COMP003B.SP25.FinalProject.FloresV
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -38,8 +37,6 @@ namespace COMP003B.SP25.FinalProject.FloresV
             app.UseStaticFiles();
 
             app.UseMiddleware<COMP003B.SP25.FinalProject.FloresV.Middleware.RequestTimingMiddleware>();
-
-            app.UseWelcomePage("/welcome");
 
             app.UseRouting();
 
