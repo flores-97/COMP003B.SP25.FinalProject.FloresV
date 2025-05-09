@@ -10,6 +10,5 @@ namespace COMP003B.SP25.FinalProject.FloresV.Data
         public DbSet<Member> Members { get; set; }
         public DbSet<Rank> Ranks { get; set; }
         public DbSet<Branch> Branches { get; set; }
-
     }
 }
