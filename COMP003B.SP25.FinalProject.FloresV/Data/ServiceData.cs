@@ -2,16 +2,16 @@
 
 namespace COMP003B.SP25.FinalProject.FloresV.Data
 {
-    public static class ServiceData
+    public static class ServicesData
     {
-        public static List<Service> Services { get; } = new()
+        public static List<Services> Services { get; } = new()
         {
-            new Service{ ServiceId = 1, ServiceBranch = "USN" },
-            new Service{ ServiceId = 2, ServiceBranch = "USMC" },
-            new Service{ ServiceId = 3, ServiceBranch = "USAF" },
-            new Service{ ServiceId = 4, ServiceBranch = "USSF" },
-            new Service{ ServiceId = 5, ServiceBranch = "USCG" },
-            new Service{ ServiceId = 6, ServiceBranch = "USARMY" },
+            new Services{ ServiceId = 1, ServiceBranch = "USN" },
+            new Services{ ServiceId = 2, ServiceBranch = "USMC" },
+            new Services{ ServiceId = 3, ServiceBranch = "USAF" },
+            new Services{ ServiceId = 4, ServiceBranch = "USSF" },
+            new Services{ ServiceId = 5, ServiceBranch = "USCG" },
+            new Services{ ServiceId = 6, ServiceBranch = "USARMY" },
         };
     }
 }

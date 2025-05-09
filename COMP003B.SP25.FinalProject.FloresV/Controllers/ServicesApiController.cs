@@ -6,37 +6,42 @@ namespace COMP003B.SP25.FinalProject.FloresV.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ServicesApiController : Controller
+    public class ServicesApi : Controller
     {
         [HttpGet]
-        public ActionResult<List<Service>> GetServices()
+        public ActionResult<List<Services>> GetServices()
         {
-            return Ok(ServiceData.Services);
+            return Ok(ServicesData.Services);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Service> GetServices(int id)
+        public ActionResult<Services> GetServices(int id)
         {
-            var service = ServiceData.Services.FirstOrDefault(s => s.ServiceId == id);
-            if(service is null)
+            var services = ServicesData.Services.FirstOrDefault(b => b.ServiceId == id);
+
+            if (services is null)
                 return NotFound();
-            return Ok(service);
+
+            return Ok(services);
         }
+
         [HttpPost]
-        public ActionResult<Service> CreateService (Service service)
+        public ActionResult<Services> CreateServices(Services services)
         {
-            service.ServiceId = ServiceData.Services.Max(s => s.ServiceId) + 1;
-            ServiceData.Services.Add(service);
-            return CreatedAtAction(nameof(GetServices), new { id = service.ServiceId }, service);
+            services.ServiceId = ServicesData.Services.Max(b => b.ServiceId) + 1;
+            ServicesData.Services.Add(services);
+            return CreatedAtAction(nameof(GetServices), new { id = services.ServiceId }, services);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateService(int id, Service updateService)
+        public IActionResult UpdateServices(int id, Services updateServices)
         {
-            var existingService = ServiceData.Services.FirstOrDefault(s =>s.ServiceId == id);
+            var existingService = ServicesData.Services.FirstOrDefault(b => b.ServiceId == id);
+
             if (existingService is null)
                 return NotFound();
-            existingService.ServiceBranch = updateService.ServiceBranch;
+
+            existingService.ServiceBranch = updateServices.ServiceBranch;
 
             return NoContent();
         }
@@ -44,35 +49,25 @@ namespace COMP003B.SP25.FinalProject.FloresV.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteService(int id)
         {
-            var service = ServiceData.Services.FirstOrDefault(s =>s.ServiceId == id); 
-            if (service is null) 
+            var services = ServicesData.Services.FirstOrDefault(b => b.ServiceId == id);
+
+            if (services is null)
                 return NotFound();
-            ServiceData.Services.Remove(service);
+
+            ServicesData.Services.Remove(services);
+
             return NoContent();
         }
 
-        [HttpGet("filter")]
-        public ActionResult<List<Service>> FilterService(string serviceBranch)
-        {
-            var filterBranch = ServiceData.Services
-                .Where(s => s.ServiceBranch == serviceBranch)
-                .OrderBy(s => s.ServiceId)
-                .ToList();
-            return Ok(filterBranch);
-        }
         [HttpGet("names")]
-        public ActionResult<List<string>> GetServiceBranch()
+        public ActionResult<List<string>> GetServiceNames()
         {
-            var serviceBranch = ServiceData.Services
-                .OrderBy(s => s.ServiceBranch)
-                .Select(s => s.ServiceBranch)
+            var servicesName = ServicesData.Services
+                .OrderBy(b => b.ServiceBranch)
+                .Select(b => b.ServiceBranch)
                 .ToList();
-            return Ok(serviceBranch);
-        }
 
-        public IActionResult Index()
-        {
-            return View();
+            return Ok(servicesName);
         }
     }
 }
